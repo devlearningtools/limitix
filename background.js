@@ -48,14 +48,18 @@ chrome.runtime.onStartup.addListener(() => {
 //      "Bounds must be at least 50% within visible screen space" (a Chrome
 //      guard against exactly this kind of hidden-window trick).
 //
-// What actually works: a background TAB (chrome.tabs.create, active:
-// false) in the user's current window, instead of a separate window. No
-// position/bounds involved, so no validation error, and Chrome's
-// background-tab throttling (clamping repeated timers) is much lighter
-// than minimized-window throttling and doesn't block a one-time page
-// load + fetch + render. The user sees a new tab briefly appear in their
-// tab strip without being switched to it, which is a fair tradeoff for
-// something that actually works.
+//   3. A background TAB (chrome.tabs.create, active: false) in the user's
+//      current window -- this did refresh the data correctly, but a new
+//      tab visibly appearing in the tab strip (title, favicon changing)
+//      was judged too noticeable/disruptive to keep.
+//
+// What actually works: a small (220x180) window, positioned legally
+// on-screen (top-left corner, 0,0) rather than minimized or off-screen.
+// Not minimized, so none of attempt #1's throttling; on-screen, so none
+// of attempt #2's bounds-validation error; and unlike attempt #3, nothing
+// changes in the user's existing browser window/tab strip at all --
+// only a small window briefly appears in the corner of the screen before
+// closing itself.
 const REFRESH_URL_BY_PLATFORM = {
   claude: "https://claude.ai/settings/usage",
   chatgpt: "https://chatgpt.com/settings/usage?tab=overview",
@@ -66,12 +70,15 @@ const OPEN_STAGGER_MS = 3000;
 const CLOSE_AFTER_MS = 12000;
 
 function refreshInBackground(url) {
-  chrome.tabs.create({ url, active: false }, (tab) => {
-    if (!tab) return;
-    setTimeout(() => {
-      chrome.tabs.remove(tab.id, () => void chrome.runtime.lastError);
-    }, CLOSE_AFTER_MS);
-  });
+  chrome.windows.create(
+    { url, focused: false, type: "popup", width: 220, height: 180, left: 0, top: 0 },
+    (win) => {
+      if (!win) return;
+      setTimeout(() => {
+        chrome.windows.remove(win.id, () => void chrome.runtime.lastError);
+      }, CLOSE_AFTER_MS);
+    }
+  );
 }
 
 chrome.alarms.onAlarm.addListener((alarm) => {

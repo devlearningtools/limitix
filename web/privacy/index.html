@@ -60,20 +60,26 @@
       <h2>How Limitix keeps this up to date</h2>
       <p>
         Rather than requiring you to manually revisit each platform's Usage
-        page, Limitix refreshes it for you, in a way designed to be
-        invisible:
+        page, Limitix refreshes it for you, in a way designed to stay out of
+        your way:
       </p>
       <ul>
         <li>
           Roughly every 30 minutes, it briefly opens the Usage page for
-          each platform in an unfocused browser window positioned off-screen — it
-          never takes focus away from what you're doing — reads it, and
-          closes that window a few seconds later.
+          each platform in a small (220×180px), unfocused browser window in
+          the corner of your screen — it never takes focus away from what
+          you're doing, and doesn't touch your existing browser windows or
+          tabs — reads it, and closes that window about 12 seconds later.
         </li>
         <li>
           Shortly after you send a message on one of these platforms, it
           does the same thing for just that platform, so the numbers don't
           lag too far behind what you're actually using.
+        </li>
+        <li>
+          This does not currently work for Claude, whose Usage panel is a
+          menu you open yourself (not a page with its own address) —
+          Claude's numbers only update when you open it that way.
         </li>
       </ul>
       <p>

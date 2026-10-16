@@ -2,12 +2,12 @@
 
 > The free Chrome extension that tells you your AI usage before the platform tells you *"You've reached your limit."*
 
-<p>
+<p align="center">
   <img alt="Website" src="https://img.shields.io/badge/website-limitix.devlearningtools.com-F0A94E?style=for-the-badge">
   <img alt="Manifest" src="https://img.shields.io/badge/manifest-V3-blue?style=for-the-badge">
   <img alt="Open Source" src="https://img.shields.io/badge/open%20source-MIT-orange?style=for-the-badge">
 </p>
-<p>
+<p align="center">
   <img alt="Privacy" src="https://img.shields.io/badge/privacy-100%25%20local-brightgreen?style=for-the-badge">
   <img alt="Status" src="https://img.shields.io/badge/status-in%20development-blueviolet?style=for-the-badge">
 </p>

@@ -35,11 +35,27 @@ chrome.runtime.onStartup.addListener(() => {
 // APIs. A plain background fetch() of the URL would only return the empty
 // app shell, not the usage data -- so getting fresh data without the user
 // manually opening the page requires actually loading it, briefly, the same
-// way a real tab would. Done here in a small, unfocused window positioned
-// off-screen so none of this is visible, then closed once the content-script
-// scraper (injected
-// automatically, matching content_scripts in manifest.json) has had time to
-// read the page and save to storage.
+// way a real tab would.
+//
+// Two approaches were tried and failed before this one, both confirmed by
+// live testing, kept here so this isn't re-attempted later:
+//   1. A new window with state: "minimized" -- no errors anywhere, but data
+//      never updated. Chrome throttles JS execution in minimized windows
+//      enough that the page's own React app never finished fetching/
+//      rendering before the window closed.
+//   2. A new window positioned off-screen (large negative left/top) to
+//      dodge that throttling -- chrome.windows.create itself rejected it:
+//      "Bounds must be at least 50% within visible screen space" (a Chrome
+//      guard against exactly this kind of hidden-window trick).
+//
+// What actually works: a background TAB (chrome.tabs.create, active:
+// false) in the user's current window, instead of a separate window. No
+// position/bounds involved, so no validation error, and Chrome's
+// background-tab throttling (clamping repeated timers) is much lighter
+// than minimized-window throttling and doesn't block a one-time page
+// load + fetch + render. The user sees a new tab briefly appear in their
+// tab strip without being switched to it, which is a fair tradeoff for
+// something that actually works.
 const REFRESH_URL_BY_PLATFORM = {
   claude: "https://claude.ai/settings/usage",
   chatgpt: "https://chatgpt.com/settings/usage?tab=overview",
@@ -49,32 +65,13 @@ const REFRESH_URL_BY_PLATFORM = {
 const OPEN_STAGGER_MS = 3000;
 const CLOSE_AFTER_MS = 12000;
 
-// IMPORTANT: state: "minimized" was tried first and confirmed (by live
-// testing) to silently fail -- Chrome throttles JS execution in minimized
-// windows aggressively enough that the page's own React app never finishes
-// fetching/rendering usage data before the window closes, so the content
-// script's scraper finds nothing to save. A small window positioned off
-// the visible screen area avoids that throttling (Chrome still treats it
-// as "visible" since it isn't minimized), while being effectively
-// invisible to the user since it renders off-screen.
 function refreshInBackground(url) {
-  chrome.windows.create(
-    {
-      url,
-      focused: false,
-      type: "popup",
-      width: 400,
-      height: 300,
-      left: -2000,
-      top: -2000,
-    },
-    (win) => {
-      if (!win) return;
-      setTimeout(() => {
-        chrome.windows.remove(win.id, () => void chrome.runtime.lastError);
-      }, CLOSE_AFTER_MS);
-    }
-  );
+  chrome.tabs.create({ url, active: false }, (tab) => {
+    if (!tab) return;
+    setTimeout(() => {
+      chrome.tabs.remove(tab.id, () => void chrome.runtime.lastError);
+    }, CLOSE_AFTER_MS);
+  });
 }
 
 chrome.alarms.onAlarm.addListener((alarm) => {

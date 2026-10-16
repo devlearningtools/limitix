@@ -3,12 +3,14 @@
 > The free Chrome extension that tells you your AI usage before the platform tells you *"You've reached your limit."*
 
 <p>
-  <img alt="Website" src="https://img.shields.io/badge/website-limitix.devlearningtools.com-F0A94E">
-  <img alt="Manifest" src="https://img.shields.io/badge/manifest-V3-blue">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-orange">
-  <img alt="Open Source" src="https://img.shields.io/badge/open%20source-yes-brightgreen">
-  <img alt="Privacy" src="https://img.shields.io/badge/privacy-100%25%20local-brightgreen">
-  <img alt="Status" src="https://img.shields.io/badge/status-in%20development-blueviolet">
+  <img alt="Website" src="https://img.shields.io/badge/website-limitix.devlearningtools.com-F0A94E?style=for-the-badge">
+  <img alt="Manifest" src="https://img.shields.io/badge/manifest-V3-blue?style=for-the-badge">
+  <img alt="Open Source" src="https://img.shields.io/badge/open%20source-yes-brightgreen?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge">
+</p>
+<p>
+  <img alt="Privacy" src="https://img.shields.io/badge/privacy-100%25%20local-brightgreen?style=for-the-badge">
+  <img alt="Status" src="https://img.shields.io/badge/status-in%20development-blueviolet?style=for-the-badge">
 </p>
 
 Built by [DevLearningTools](https://devlearningtools.com).

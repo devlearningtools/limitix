@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sorry to see you go — Limitix</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .goodbye-wrap {
+        padding-top: 80px;
+      }
+      .goodbye-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 32px 0 48px;
+      }
+      .goodbye-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        border: 1px solid #2a2a2a;
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .goodbye-btn:hover {
+        border-color: #f0a94e;
+        color: #f0a94e;
+      }
+      .goodbye-btn.primary {
+        background: #f0a94e;
+        border-color: #f0a94e;
+        color: #141414;
+      }
+      .goodbye-btn.primary:hover {
+        color: #141414;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="wrap goodbye-wrap">
+      <div class="logo-row">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-word"><span class="accent">Dev</span>LearningTools</span>
+      </div>
+
+      <h1>Sorry to see you <span class="accent">go</span></h1>
+      <p class="lede">
+        Thanks for trying Limitix. If something didn't work right, or it was
+        just missing a feature you needed, a quick note would genuinely help
+        us improve it.
+      </p>
+
+      <div class="goodbye-actions">
+        <a
+          class="goodbye-btn primary"
+          href="mailto:contactus@devlearningtools.com?subject=Limitix%20feedback"
+        >
+          Send quick feedback
+        </a>
+        <a class="goodbye-btn" href="https://devlearningtools.com" target="_blank" rel="noopener">
+          Visit DevLearningTools
+        </a>
+      </div>
+
+      <p class="lede" style="font-size: 13px; color: #777;">
+        No data was collected to show you this page — Limitix never sent
+        anything to a server, before or after uninstalling.
+      </p>
+    </main>
+  </body>
+</html>

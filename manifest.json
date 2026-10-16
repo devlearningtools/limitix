@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Limitix — AI Usage Tracker",
+  "short_name": "Limitix",
+  "version": "0.1.0",
+  "description": "See your Claude, ChatGPT, and Gemini usage limits and reset times without digging through Settings. 100% local, no account needed.",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://claude.ai/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": [
+        "shared/storage.js",
+        "content-scripts/claude-scraper.js",
+        "content-scripts/badge.js",
+        "content-scripts/send-detector.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": [
+        "shared/storage.js",
+        "content-scripts/chatgpt-scraper.js",
+        "content-scripts/badge.js",
+        "content-scripts/send-detector.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": [
+        "shared/storage.js",
+        "content-scripts/gemini-scraper.js",
+        "content-scripts/badge.js",
+        "content-scripts/send-detector.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Limitix — AI Usage Tracker",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  }
+}

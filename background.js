@@ -61,7 +61,7 @@ chrome.runtime.onStartup.addListener(() => {
 // only a small window briefly appears in the corner of the screen before
 // closing itself.
 const REFRESH_URL_BY_PLATFORM = {
-  claude: "https://claude.ai/settings/usage",
+  claude: "https://claude.ai/new#settings/usage",
   chatgpt: "https://chatgpt.com/settings/usage?tab=overview",
   gemini: "https://gemini.google.com/usage",
 };

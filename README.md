@@ -47,3 +47,7 @@ Content scripts log diagnostic output prefixed `[Limitix]` to the page console.
 ## Status
 
 Not yet published to the Chrome Web Store. `web/` is not yet deployed — `background.js`'s `setUninstallURL` and the Privacy Policy links point to `https://limitix.devlearningtools.com`, which doesn't resolve until that deploy happens.
+
+## License
+
+[MIT](LICENSE)

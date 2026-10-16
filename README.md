@@ -5,8 +5,7 @@
 <p>
   <img alt="Website" src="https://img.shields.io/badge/website-limitix.devlearningtools.com-F0A94E?style=for-the-badge">
   <img alt="Manifest" src="https://img.shields.io/badge/manifest-V3-blue?style=for-the-badge">
-  <img alt="Open Source" src="https://img.shields.io/badge/open%20source-yes-brightgreen?style=for-the-badge">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge">
+  <img alt="Open Source" src="https://img.shields.io/badge/open%20source-MIT-orange?style=for-the-badge">
 </p>
 <p>
   <img alt="Privacy" src="https://img.shields.io/badge/privacy-100%25%20local-brightgreen?style=for-the-badge">

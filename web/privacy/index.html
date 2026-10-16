@@ -39,19 +39,50 @@
 
       <h2>Short version</h2>
       <p>
-        Limitix reads the Usage/Settings page you already have open on
-        Claude, ChatGPT, or Gemini, and saves what it finds on your own
-        device. It never sends anything to a server, because it doesn't have
-        one. There is no account, no sign-in, and no tracking.
+        Limitix reads the Usage/Settings page on Claude, ChatGPT, or
+        Gemini — either one you already have open, or one it briefly opens
+        itself in the background to keep your data current — and saves
+        what it finds on your own device. It never sends anything to a
+        server, because it doesn't have one. There is no account, no
+        sign-in, and no tracking.
       </p>
 
       <h2>What Limitix reads</h2>
       <p>
-        When you open the Usage or Settings page on claude.ai, chatgpt.com,
-        or gemini.google.com, Limitix's content script reads the visible
-        text on that page (your usage percentage and reset-time labels,
-        such as "58% used" or "Resets at 3:10 PM"). It does not read your
-        conversations, prompts, or any other content on these sites.
+        When the Usage or Settings page on claude.ai, chatgpt.com, or
+        gemini.google.com is open, Limitix's content script reads the
+        visible text on that page (your usage percentage and reset-time
+        labels, such as "58% used" or "Resets at 3:10 PM"). It does not
+        read your conversations, prompts, or any other content on these
+        sites.
+      </p>
+
+      <h2>How Limitix keeps this up to date</h2>
+      <p>
+        Rather than requiring you to manually revisit each platform's Usage
+        page, Limitix refreshes it for you, in a way designed to be
+        invisible:
+      </p>
+      <ul>
+        <li>
+          Roughly every 30 minutes, it briefly opens the Usage page for
+          each platform in a minimized, unfocused browser window — it
+          never takes focus away from what you're doing — reads it, and
+          closes that window a few seconds later.
+        </li>
+        <li>
+          Shortly after you send a message on one of these platforms, it
+          does the same thing for just that platform, so the numbers don't
+          lag too far behind what you're actually using.
+        </li>
+      </ul>
+      <p>
+        Both of these only ever load a page that is already part of the
+        platform itself (its own Usage/Settings page) using your existing,
+        already-signed-in browser session. No separate login, token, or
+        credential is involved, and nothing about this is sent anywhere —
+        it's read locally and saved locally, the same as if you'd opened
+        that page yourself.
       </p>
 
       <h2>What Limitix stores</h2>
@@ -76,10 +107,17 @@
       <ul>
         <li><strong>storage</strong> — to save usage data locally, as described above.</li>
         <li>
+          <strong>alarms</strong> — to schedule the roughly-every-30-minute
+          background refresh described above. This permission only lets
+          Limitix run code on a timer; it grants no extra data access by
+          itself.
+        </li>
+        <li>
           <strong>Host access to claude.ai, chatgpt.com, and gemini.google.com</strong>
           — so its content script can read the Usage page text on those
-          specific sites. Limitix does not run on, or request access to,
-          any other website.
+          specific sites, and so it can open/close the brief background
+          refresh windows described above. Limitix does not run on, or
+          request access to, any other website.
         </li>
       </ul>
 

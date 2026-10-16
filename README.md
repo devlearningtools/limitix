@@ -46,7 +46,7 @@ Unlike some similar tools, every platform here gets the same real treatment — 
 
 Limitix never calls any internal/undocumented API. It reads the plain text already visible on each platform's own Settings → Usage page (percentage used, reset time), and saves it to `chrome.storage.local` — on your device only. A floating badge on the chat page, and the extension popup, show that saved data, kept fresh by:
 
-- A background refresh every 30 minutes (a minimized, unfocused window — invisible to you)
+- A background refresh every 30 minutes (an unfocused, off-screen window — invisible to you)
 - An event-based refresh a few seconds after you send a message, so it doesn't lag behind a fixed timer
 
 This is deliberately different from reverse-engineering a platform's private API: it's slower to update than true real-time, but it can't break silently when an undocumented endpoint changes, and it never touches anything beyond the page you'd already be looking at yourself.

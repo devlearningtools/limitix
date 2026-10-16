@@ -35,8 +35,9 @@ chrome.runtime.onStartup.addListener(() => {
 // APIs. A plain background fetch() of the URL would only return the empty
 // app shell, not the usage data -- so getting fresh data without the user
 // manually opening the page requires actually loading it, briefly, the same
-// way a real tab would. Done here in a minimized, unfocused window so none
-// of this is visible, then closed once the content-script scraper (injected
+// way a real tab would. Done here in a small, unfocused window positioned
+// off-screen so none of this is visible, then closed once the content-script
+// scraper (injected
 // automatically, matching content_scripts in manifest.json) has had time to
 // read the page and save to storage.
 const REFRESH_URL_BY_PLATFORM = {
@@ -46,11 +47,27 @@ const REFRESH_URL_BY_PLATFORM = {
 };
 
 const OPEN_STAGGER_MS = 3000;
-const CLOSE_AFTER_MS = 8000;
+const CLOSE_AFTER_MS = 12000;
 
+// IMPORTANT: state: "minimized" was tried first and confirmed (by live
+// testing) to silently fail -- Chrome throttles JS execution in minimized
+// windows aggressively enough that the page's own React app never finishes
+// fetching/rendering usage data before the window closes, so the content
+// script's scraper finds nothing to save. A small window positioned off
+// the visible screen area avoids that throttling (Chrome still treats it
+// as "visible" since it isn't minimized), while being effectively
+// invisible to the user since it renders off-screen.
 function refreshInBackground(url) {
   chrome.windows.create(
-    { url, focused: false, state: "minimized", type: "popup" },
+    {
+      url,
+      focused: false,
+      type: "popup",
+      width: 400,
+      height: 300,
+      left: -2000,
+      top: -2000,
+    },
     (win) => {
       if (!win) return;
       setTimeout(() => {

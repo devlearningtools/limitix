@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Limitix — Privacy Policy</title>
+    <link rel="stylesheet" href="../onboarding/welcome.css" />
+    <style>
+      .legal h2 {
+        margin-top: 40px;
+        font-size: 18px;
+      }
+      .legal p,
+      .legal li {
+        color: #bbb;
+        line-height: 1.7;
+        font-size: 14px;
+      }
+      .legal ul {
+        padding-left: 20px;
+      }
+      .updated {
+        color: #777;
+        font-size: 12px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="wrap legal">
+      <div class="logo-row">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-word"><span class="accent">Dev</span>LearningTools</span>
+      </div>
+
+      <h1>Privacy <span class="accent">Policy</span></h1>
+      <p class="updated">Limitix — last updated October 2026</p>
+
+      <h2>Short version</h2>
+      <p>
+        Limitix reads the Usage/Settings page you already have open on
+        Claude, ChatGPT, or Gemini, and saves what it finds on your own
+        device. It never sends anything to a server, because it doesn't have
+        one. There is no account, no sign-in, and no tracking.
+      </p>
+
+      <h2>What Limitix reads</h2>
+      <p>
+        When you open the Usage or Settings page on claude.ai, chatgpt.com,
+        or gemini.google.com, Limitix's content script reads the visible
+        text on that page (your usage percentage and reset-time labels,
+        such as "58% used" or "Resets at 3:10 PM"). It does not read your
+        conversations, prompts, or any other content on these sites.
+      </p>
+
+      <h2>What Limitix stores</h2>
+      <p>
+        The usage percentages and reset labels it reads are saved using
+        <code>chrome.storage.local</code> — a storage area built into your
+        browser, scoped to this extension, and stored only on your own
+        device. This data is never transmitted anywhere. Limitix has no
+        backend server, no database, and no analytics of any kind.
+      </p>
+
+      <h2>What Limitix does not do</h2>
+      <ul>
+        <li>It does not require an account, sign-in, or API key.</li>
+        <li>It does not send any data to a server — there isn't one.</li>
+        <li>It does not use cookies, analytics, or third-party trackers.</li>
+        <li>It does not read or store your chat messages or prompts.</li>
+        <li>It does not share data with any third party, because it never leaves your browser.</li>
+      </ul>
+
+      <h2>Permissions it requests, and why</h2>
+      <ul>
+        <li><strong>storage</strong> — to save usage data locally, as described above.</li>
+        <li>
+          <strong>Host access to claude.ai, chatgpt.com, and gemini.google.com</strong>
+          — so its content script can read the Usage page text on those
+          specific sites. Limitix does not run on, or request access to,
+          any other website.
+        </li>
+      </ul>
+
+      <h2>Third-party platforms</h2>
+      <p>
+        Limitix is an independent, unofficial tool. It is not affiliated
+        with, endorsed by, or sponsored by Anthropic, OpenAI, or Google. It
+        reads only information these platforms already display to you in
+        your own account.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If this policy changes, the updated version will be posted on this
+        page with a new "last updated" date.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy or Limitix can be sent through
+        <a href="https://devlearningtools.com/contact" target="_blank" rel="noopener">devlearningtools.com/contact</a>.
+      </p>
+    </main>
+  </body>
+</html>

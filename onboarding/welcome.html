@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Limitix</title>
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+
+    <main class="wrap">
+      <div class="logo-row">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-word"><span class="accent">Dev</span>LearningTools</span>
+      </div>
+
+      <h1>Welcome to <span class="accent">Limitix</span></h1>
+      <p class="lede">
+        One free extension, three AI tools. See your Claude, ChatGPT, and
+        Gemini usage limits and reset times — without digging through
+        Settings every time.
+      </p>
+
+      <section class="setup-card">
+        <h2>Quick setup — 30 seconds</h2>
+        <p class="setup-sub">
+          Click each button below once. It opens that platform's own Usage
+          page in a new tab — Limitix reads what's already there and
+          remembers it for you.
+        </p>
+
+        <div class="platform-grid">
+          <button class="platform-btn" data-platform="claude" data-url="https://claude.ai/settings/usage">
+            <span class="platform-dot claude"></span>
+            <span class="platform-name">Claude</span>
+            <span class="platform-action">Open Usage &rarr;</span>
+          </button>
+
+          <button class="platform-btn" data-platform="chatgpt" data-url="https://chatgpt.com/settings/usage?tab=overview">
+            <span class="platform-dot chatgpt"></span>
+            <span class="platform-name">ChatGPT</span>
+            <span class="platform-action">Open Usage &rarr;</span>
+          </button>
+
+          <button class="platform-btn" data-platform="gemini" data-url="https://gemini.google.com/usage">
+            <span class="platform-dot gemini"></span>
+            <span class="platform-name">Gemini</span>
+            <span class="platform-action">Open Usage &rarr;</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">
+          <span class="feature-icon">&#9679;</span>
+          <div>
+            <h3>100% local</h3>
+            <p>Everything stays in your browser. Nothing is ever sent to a server.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">&#9679;</span>
+          <div>
+            <h3>No account needed</h3>
+            <p>No sign-up, no API key. Install and go.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">&#9679;</span>
+          <div>
+            <h3>Reset countdowns everywhere</h3>
+            <p>Not just Claude — ChatGPT and Gemini too.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Limitix is an independent tool, not affiliated with Anthropic, OpenAI,
+        or Google. Built by
+        <a href="https://devlearningtools.com" target="_blank" rel="noopener">DevLearningTools</a>.
+        &middot;
+        <a href="https://limitix.devlearningtools.com" target="_blank" rel="noopener">limitix.devlearningtools.com</a>
+        &middot;
+        <a href="https://limitix.devlearningtools.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      </footer>
+    </main>
+
+    <script src="../shared/storage.js"></script>
+    <script src="welcome.js"></script>
+  </body>
+</html>

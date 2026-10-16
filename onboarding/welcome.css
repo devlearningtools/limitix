@@ -1,0 +1,244 @@
+:root {
+  --ink: #121212;
+  --ink-soft: #1a1a1a;
+  --line: #2a2a2a;
+  --paper: #f2f2f2;
+  --mint: #9fb3ac;
+  --amber: #f0a94e;
+  --amber-bright: #ffc879;
+  --claude-color: #d97757;
+  --chatgpt-color: #74aa9c;
+  --gemini-color: #4285f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px clamp(20px, 4vw, 56px) 56px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--amber);
+  border-radius: 8px;
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 14px;
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+}
+
+.logo-word {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 1.1;
+  margin: 0 0 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  color: var(--amber);
+}
+
+.lede {
+  font-size: clamp(15px, 2.2vw, 18px);
+  color: #b8b8b8;
+  max-width: 620px;
+  line-height: 1.6;
+  margin: 0 0 40px;
+}
+
+.setup-card {
+  width: 100%;
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(20px, 4vw, 32px);
+  margin-bottom: 48px;
+}
+
+.setup-card h2 {
+  margin: 0 0 8px;
+  font-size: clamp(18px, 2.5vw, 22px);
+}
+
+.setup-sub {
+  margin: 0 0 24px;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 680px) {
+  .platform-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.platform-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.platform-btn:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+
+.platform-btn:active {
+  transform: translateY(0);
+}
+
+.platform-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.platform-dot.claude {
+  background: var(--claude-color);
+}
+
+.platform-dot.chatgpt {
+  background: var(--chatgpt-color);
+}
+
+.platform-dot.gemini {
+  background: var(--gemini-color);
+}
+
+.platform-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.platform-action {
+  font-size: 12px;
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.platform-btn.done {
+  border-color: #4caf7d;
+  opacity: 0.75;
+}
+
+.platform-btn.done .platform-action {
+  color: #4caf7d;
+}
+
+.features {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 680px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  color: var(--amber);
+  font-size: 10px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.feature h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+}
+
+footer {
+  font-size: 12px;
+  color: #777;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+footer a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
